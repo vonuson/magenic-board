@@ -1,0 +1,17 @@
+<div class="dialog-box">
+  <div class="dialog-header">
+    <span class="header-text">{{ title }}</span>
+    <span class="fill-space"></span>
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
+  </div>
+  <div class="dialog-body">
+    <mat-dialog-content>{{ message }}</mat-dialog-content>
+    <mat-form-field class="full-width">
+      <input matInput tabindex="1" [(ngModel)]="data.response" (keyup.enter)="keyupEnter(data.response)">
+      <button mat-button type="button" *ngIf="data.response" matSuffix mat-icon-button aria-label="Clear" (click)="data.response=''">
+          <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button [mat-dialog-close]="data" tabindex="2" color="primary">{{ btn }}</button>
+  </div>
+</div>

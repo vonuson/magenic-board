@@ -1,0 +1,36 @@
+<div id="board" *ngIf="cardLists">
+  <div class="list-wrapper" *ngFor="let cardList of cardLists">
+    <div class="list-content">
+      <div class="list-header">
+        <span class="card-list-text">{{ cardList.listName }}</span>
+      </div>
+      <mb-card-detail [cardList]="cardList" (reloadListEvent)="reloadList($event)"></mb-card-detail>
+    </div>
+  </div>
+  <div class="list-wrapper add-list">
+    <div class="list-entry is-idle" *ngIf="listEntryIdle; else listEntryActive" (click)="toggleListEntry()">
+      <span class="list-text">Add a list...</span>
+    </div>
+    <ng-template #listEntryActive>
+      <div class="list-entry list-content full-width">
+        <form #listForm="ngForm" (ngSubmit)="onSubmit(listForm)">
+          <div class="list-entry-input">
+            <mat-form-field class="full-width">
+              <input [(ngModel)]="listEntry" matInput type="text" name="listEntry" id="listEntry" placeholder="Card List" maxlength="100"
+                autofocus>
+              <button mat-button type="button" *ngIf="listEntry" matSuffix mat-icon-button aria-label="Clear" (click)="listEntry=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="list-entry-control">
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <button mat-icon-button (click)="toggleListEntry()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>

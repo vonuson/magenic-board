@@ -1,0 +1,12 @@
+span.fill-space {
+    flex: 1 1 auto;
+}
+
+button.underline {
+    text-decoration: underline;
+}
+
+span.header-text{
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,0 +1,24 @@
+<div class="card-popup-move">
+  <div class="dialog-header">
+    <span class="header-text">{{ title }}</span>
+    <span class="fill-space"></span>
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
+  </div>
+  <div class="dialog-body">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="List" [(ngModel)]="selectedCardListId" (change)="onSelect()">
+        <mat-option *ngFor="let cardList of cardLists" [value]="cardList.id">
+          {{ cardList.listName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Position" [(ngModel)]="selectedCardOrder">
+        <mat-option *ngFor="let card of cards" [value]="card.order">
+          {{ card.order }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="onMoveClick(data)" tabindex="2" color="primary">Move</button>
+  </div>
+</div>

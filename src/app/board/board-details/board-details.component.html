@@ -1,0 +1,12 @@
+<div class="board-wrapper" *ngIf="board">
+  <div class="board-main-content">
+    <div class="board-header">
+      <button mat-button>
+        <span class="board-text">{{ board.boardName }}</span>
+      </button>
+    </div>
+    <div class="board-details">
+      <mb-card-list></mb-card-list>
+    </div>
+  </div>
+</div>

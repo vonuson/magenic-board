@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>dashboard</mat-icon>
+      <span class="header-text">Board</span>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span *ngIf="boards">
+        <span *ngFor="let board of boards">
+          <button mat-menu-item (click)="onBoardClick(board.id)">{{board.boardName}}</button>
+        </span>
+      </span>
+      <button mat-menu-item class="underline" (click)="openInputDialog($event)">Add New Board</button>
+    </mat-menu>
+    <span class="fill-space"></span>
+    <button mat-button (click)="onClickBoard()">
+      <mat-icon>dashboard</mat-icon>
+      <span class="header-text">Magenic Board</span>
+    </button>
+    <span class="fill-space"></span>
+    <button mat-button>
+      <mat-icon>account_circle</mat-icon>
+      <span class="header-text">{{ user }}</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

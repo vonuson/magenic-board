@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  BOARDS_URL: 'http://localhost:3000/boards',
+  CARD_LIST_URL: 'http://localhost:3000/card-list',
+  CARD_URL: 'http://localhost:3000/card-detail',
 };

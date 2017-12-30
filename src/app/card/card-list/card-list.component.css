@@ -1,0 +1,82 @@
+div#board{
+    user-select: none;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    padding-right: 56px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div.list-wrapper {
+    width: 270px;
+    margin: 0 5px;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+div.list-wrapper:first-child {
+    margin-left: 10px;
+}
+
+div.list-wrapper:last-child{
+    margin-right: 10px;
+}
+
+div.list-content{
+    background-color: #e2e4e6;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
+}
+
+div.list-header{
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    position: relative;
+    min-height: 18px;
+}
+
+div.list-wrapper.add-list{
+    height: auto;
+    min-height: 30px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+div.list-entry{
+    padding: 8px 10px;
+}
+
+div.is-idle{
+    background: rgba(0,0,0,.12);
+    cursor: pointer;
+}
+
+span.list-text{
+    color: hsla(0,0%,100%,.7);
+}
+
+span.card-list-text{
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mb-card-detail{
+    overflow-y: auto;
+}

@@ -1,0 +1,34 @@
+<div class="list-cards" *ngFor="let card of cards">
+  <div class="list-card" [mbHoverClass]="'active-card'">
+    <span class="list-card-text" (dblclick)="onCardEdit(card,$event)">{{ card.cardName }}
+      <button mat-icon-button (click)="onCardMove(card,$event)">
+        <mat-icon id="icon-edit" [mbHoverClass]="'active-icon'">mode_edit</mat-icon>
+      </button>
+    </span>
+  </div>
+</div>
+<div class="card-wrapper">
+  <div class="card-entry is-idle" *ngIf="cardEntryIdle; else cardEntryActive" (click)="toggleCardEntry()">
+    <span class="card-text">Add a card....</span>
+  </div>
+  <ng-template #cardEntryActive>
+    <div class="card-entry full-width">
+      <form #cardForm="ngForm" (ngSubmit)="onSubmit(cardForm)">
+        <div class="card-entry-input">
+          <mat-form-field class="full-width">
+            <input [(ngModel)]="cardEntry" matInput type="text" name="cardEntry" id="cardEntry" placeholder="Card" maxlength="1200" autofocus>
+            <button mat-button *ngIf="cardEntry" type="button" matSuffix mat-icon-button aria-label="Clear" (click)="cardEntry=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="card-entry-control">
+          <button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-icon-button (click)="toggleCardEntry()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,9 @@
+<div class="card-popup-edit">
+  <div class="dialog-body">
+    <mat-form-field class="full-width">
+      <textarea matInput tabindex="1" [(ngModel)]="data.input" (keyup.enter)="keyupEnter(data.input)" (focus)="$event.target.select()"
+        autofocus maxlength="100"></textarea>
+    </mat-form-field>
+    <button mat-raised-button [mat-dialog-close]="data" tabindex="2" color="primary">Save</button>
+  </div>
+</div>
