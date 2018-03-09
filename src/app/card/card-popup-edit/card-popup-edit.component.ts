@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
 @Component({
   selector: 'mb-card-popup-edit',
   templateUrl: './card-popup-edit.component.html',
-  styleUrls: ['./card-popup-edit.component.css']
+  styleUrls: ['./card-popup-edit.component.less']
 })
 export class CardPopupEditComponent {
   private input: string;

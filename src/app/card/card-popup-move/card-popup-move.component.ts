@@ -11,7 +11,7 @@ import { Card } from '@shared/model/concrete/card';
 @Component({
   selector: 'mb-card-popup-move',
   templateUrl: './card-popup-move.component.html',
-  styleUrls: ['./card-popup-move.component.css']
+  styleUrls: ['./card-popup-move.component.less']
 })
 export class CardPopupMoveComponent {
   private title: string;

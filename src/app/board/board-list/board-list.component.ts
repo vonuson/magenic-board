@@ -8,7 +8,7 @@ import { IBoard } from '@shared/model/contract/board';
 @Component({
   selector: 'mb-board-list',
   templateUrl: './board-list.component.html',
-  styleUrls: ['./board-list.component.css']
+  styleUrls: ['./board-list.component.less']
 })
 export class BoardListComponent implements OnInit {
   private boards: IBoard[];
