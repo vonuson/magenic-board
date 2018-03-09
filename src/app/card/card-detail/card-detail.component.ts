@@ -2,13 +2,13 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
-import { ArrayExtensionService } from '../../shared/service/array-extension.service';
-import { CardDetailService } from '../../shared/service/card-detail.service';
+import { ArrayExtensionService } from '@shared/service/array-extension/array-extension.service';
+import { CardDetailService } from '@shared/service/card-detail/card-detail.service';
 import { CardPopupEditComponent } from '../card-popup-edit/card-popup-edit.component'; 
 import { CardPopupMoveComponent } from '../card-popup-move/card-popup-move.component'; 
-import { ICardList } from '../../model/contract/card-list';
-import { ICard } from '../../model/contract/card';
-import { Card } from '../../model/concrete/card';
+import { ICardList } from '@shared/model/contract/card-list';
+import { ICard } from '@shared/model/contract/card';
+import { Card } from '@shared/model/concrete/card';
 
 
 @Component({

@@ -3,9 +3,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
 
-import { BoardService } from '../service/board.service';
-import { Board } from '../../model/concrete/board';
-import { InputDialogComponent } from '../component/input-dialog.component';
+import { BoardService } from '../board/board.service';
+import { Board } from '@shared/model/concrete/board';
+import { InputDialogComponent } from '@shared/component/input-dialog/input-dialog.component';
 
 @Injectable()
 export class BoardDialogService {

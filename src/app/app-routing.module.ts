@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PageNotFoundComponent } from './shared/component/page-not-found.component';
+import { PageNotFoundComponent } from '@shared/component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'board', pathMatch: 'full' },

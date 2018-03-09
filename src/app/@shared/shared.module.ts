@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 
-import { InputDialogComponent } from './component/input-dialog.component';
-import { HoverClassDirective } from './directives/hover-class.directive';
-import { PageNotFoundComponent } from './component/page-not-found.component';
+import { InputDialogComponent } from './component/input-dialog/input-dialog.component';
+import { HoverClassDirective } from './directives/hover-class/hover-class.directive';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [

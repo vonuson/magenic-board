@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 import { Observable } from 'rxjs/Observable';
 
-import { IBoard } from './../../model/contract/board';
+import { IBoard } from '@shared/model/contract/board';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
