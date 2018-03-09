@@ -1,12 +1,12 @@
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, Inject } from '@angular/core';
 
-import { ArrayExtensionService } from '../../shared/service/array-extension.service';
-import { CardDetailService } from '../../shared/service/card-detail.service';
-import { CardListService } from '../../shared/service/card-list.service';
-import { ICardList } from '../../model/contract/card-list';
-import { ICard } from '../../model/contract/card';
-import { Card } from '../../model/concrete/card';
+import { ArrayExtensionService } from '@shared/service/array-extension/array-extension.service';
+import { CardDetailService } from '@shared/service/card-detail/card-detail.service';
+import { CardListService } from '@shared/service/card-list/card-list.service';
+import { ICardList } from '@shared/model/contract/card-list';
+import { ICard } from '@shared/model/contract/card';
+import { Card } from '@shared/model/concrete/card';
 
 @Component({
   selector: 'mb-card-popup-move',

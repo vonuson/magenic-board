@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { BoardDialogService } from '../../shared/service/board-dialog.service';
-import { BoardService } from '../../shared/service/board.service';
-import { IBoard } from '../../model/contract/board';
+import { BoardDialogService } from '@shared/service/board-dialog/board-dialog.service';
+import { BoardService } from '@shared/service/board/board.service';
+import { IBoard } from '@shared/model/contract/board';
 
 @Component({
   selector: 'mb-board-list',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 
-import { ICardList } from '../../model/contract/card-list';
+import { ICardList } from '@shared/model/contract/card-list';
 
 @Injectable()
 export class CardListService {

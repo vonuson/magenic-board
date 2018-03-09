@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { IOrder } from '../../model/contract/order';
+import { IOrder } from '@shared/model/contract/order';
 
 @Injectable()
 export class ArrayExtensionService {

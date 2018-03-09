@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 
-import { CardDetailService } from './card-detail.service';
-import { ICard } from '../../model/contract/card';
+import { CardDetailService } from '../card-detail/card-detail.service';
+import { ICard } from '@shared/model/contract/card';
 
 @Injectable()
 export class CardMoveService {

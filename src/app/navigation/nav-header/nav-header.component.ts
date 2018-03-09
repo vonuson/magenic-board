@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BoardService } from '../../shared/service/board.service';
-import { BoardDialogService } from '../../shared/service/board-dialog.service';
+import { BoardService } from '@shared/service/board/board.service';
+import { BoardDialogService } from '@shared/service/board-dialog/board-dialog.service';
 
 import { Router } from '@angular/router';
-import { IBoard } from '../../model/contract/board';
+import { IBoard } from '@shared/model/contract/board';
 import { Subject, Subscription } from 'rxjs/Rx';
 
 @Component({

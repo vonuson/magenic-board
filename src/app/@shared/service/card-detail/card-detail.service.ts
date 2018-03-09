@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 
-import { ICard } from '../../model/contract/card';
+import { ICard } from '@shared/model/contract/card';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators/tap';
 

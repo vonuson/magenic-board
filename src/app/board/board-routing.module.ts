@@ -4,7 +4,7 @@ import { BoardGuard } from './board.guard';
 
 import { BoardListComponent } from './board-list/board-list.component';
 import { BoardDetailsComponent } from './board-details/board-details.component';
-import { PageNotFoundComponent } from '../shared/component/page-not-found.component';
+import { PageNotFoundComponent } from '@shared/component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     { path: '', component: BoardListComponent },
