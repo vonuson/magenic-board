@@ -1,18 +1,14 @@
 <div *ngIf="boards" class="boards-section">
   <div class="boards-section-header">
     <mat-icon>perm_identity</mat-icon>
-    <span class="header-text">Personal Boards</span>
+    <span class="boards-header-text">Personal Boards</span>
   </div>
-  <div class="boards-section-list">
-    <mat-grid-list cols="4" rowHeight="100px" gutterSize="1em">
-      <div *ngFor="let board of boards">
-        <mat-grid-tile (click)="onBoardClick(board.id)" [style.backgroundColor]="board.boardColor" [mbHoverClass]="'active-board'">
-          <span class="text-inside-grid">{{ board.boardName }}</span>
-        </mat-grid-tile>
-      </div>
-      <mat-grid-tile class="tile-create" (click)="openInputDialog($event)" [mbHoverClass]="'active-board'">
-        <span class="text-inside-grid-create">Create new board...</span>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
+  <mat-grid-list class="boards-section-list" cols="4" rowHeight="100px" gutterSize="1em">
+    <mat-grid-tile *ngFor="let board of boards" (click)="onBoardClick(board.id)" [style.backgroundColor]="board.boardColor">
+      <span class="grid-text-display">{{ board.boardName }}</span>
+    </mat-grid-tile>
+    <mat-grid-tile class="tile-create" (click)="openInputDialog($event)">
+      <span class="grid-text-create">Create new board...</span>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

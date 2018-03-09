@@ -9,7 +9,7 @@ import { Subject, Subscription } from 'rxjs/Rx';
 @Component({
   selector: 'mb-nav-header',
   templateUrl: './nav-header.component.html',
-  styleUrls: ['./nav-header.component.css']
+  styleUrls: ['./nav-header.component.less']
 })
 export class NavHeaderComponent implements OnInit, OnDestroy {
   private boards: IBoard[] = [];

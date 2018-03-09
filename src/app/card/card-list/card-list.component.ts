@@ -11,7 +11,7 @@ import { ICard } from '@shared/model/contract/card';
 @Component({
   selector: 'mb-card-list',
   templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.css']
+  styleUrls: ['./card-list.component.less']
 })
 export class CardListComponent implements OnInit {
   private cardLists: ICardList[] = [];

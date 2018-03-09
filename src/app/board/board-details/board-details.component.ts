@@ -9,7 +9,7 @@ import { IBoard } from '@shared/model/contract/board';
 @Component({
   selector: 'mb-board-details',
   templateUrl: './board-details.component.html',
-  styleUrls: ['./board-details.component.css']
+  styleUrls: ['./board-details.component.less']
 })
 export class BoardDetailsComponent implements OnInit, OnDestroy {
   private board: IBoard;

@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
 @Component({
   selector: 'mb-input-dialog',
   templateUrl: './input-dialog.component.html',
-  styleUrls: ['./input-dialog.component.css']
+  styleUrls: ['./input-dialog.component.less']
 })
 export class InputDialogComponent {
   private title: string;
