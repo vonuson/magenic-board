@@ -18,10 +18,11 @@ export class CardListComponent implements OnInit {
   private listEntryIdle = true;
   private boardId: number;
 
-  constructor(private route: ActivatedRoute,
-              private cardListService: CardListService,
-              private arrayExtensionService: ArrayExtensionService,
-              private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cardListService: CardListService,
+    private arrayExtensionService: ArrayExtensionService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.flatMap((params: Params) => {

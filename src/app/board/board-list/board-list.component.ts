@@ -13,9 +13,10 @@ import { IBoard } from '@shared/model/contract/board';
 export class BoardListComponent implements OnInit {
   private boards: IBoard[];
 
-  constructor(private boardService: BoardService,
-              private boardDialogService: BoardDialogService,
-              private router: Router) { }
+  constructor(
+    private boardService: BoardService,
+    private boardDialogService: BoardDialogService,
+    private router: Router) { }
 
   ngOnInit() {
     this.boardService.getAllBoard()

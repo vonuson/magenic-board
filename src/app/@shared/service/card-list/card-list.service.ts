@@ -10,18 +10,18 @@ export class CardListService {
 
   constructor(private http: HttpClient) { }
   
-    public getCardListByBoardId(boardId: string) {
-      let params = new HttpParams();
-      params = params.append('boardId', boardId);
-      
-      return this.http.get<ICardList[]>(environment.CARD_LIST_URL, { params: params });
-    }
+  public getCardListByBoardId(boardId: string) {
+    let params = new HttpParams();
+    params = params.append('boardId', boardId);
+    
+    return this.http.get<ICardList[]>(environment.CARD_LIST_URL, { params: params });
+  }
 
-    public addCardList(cardList: ICardList): Observable<Object> {
-      return this.http.post(environment.CARD_LIST_URL, {
-        boardId: cardList.boardId,
-        listName: cardList.listName,
-        order: cardList.order
-      });
-    }
+  public addCardList(cardList: ICardList): Observable<Object> {
+    return this.http.post(environment.CARD_LIST_URL, {
+      boardId: cardList.boardId,
+      listName: cardList.listName,
+      order: cardList.order
+    });
+  }
 }

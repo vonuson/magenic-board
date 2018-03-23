@@ -21,7 +21,8 @@ export class CardPopupMoveComponent {
   private selectedCardListId: number;
   private selectedCardOrder: number;
   
-  constructor(private cardDetailService: CardDetailService,
+  constructor(
+    private cardDetailService: CardDetailService,
     private cardListService: CardListService,
     private arrayExtensionService: ArrayExtensionService,
     public dialogRef: MatDialogRef<CardPopupMoveComponent>,

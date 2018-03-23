@@ -9,11 +9,11 @@ import { ICard } from '@shared/model/contract/card';
 @Injectable()
 export class CardMoveService {
 
-  constructor(private http: HttpClient,
-              private cardDetailService: CardDetailService) { }
+  constructor(
+    private http: HttpClient,
+    private cardDetailService: CardDetailService) { }
 
   public moveCard(card: ICard, order: number): Observable<Object> {
-
     return this.cardDetailService.editCard(card);
   }
 }

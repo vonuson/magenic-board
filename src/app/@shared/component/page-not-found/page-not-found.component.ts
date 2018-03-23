@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./page-not-found.component.less']
 })
 export class PageNotFoundComponent implements OnInit {
-  public errorTitle = "Error 404: Page not found.";
+  public errorTitle = 'Error 404: Page not found.';
   public errorMessage = '';
 
   constructor(private router: Router,

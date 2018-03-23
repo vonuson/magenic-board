@@ -19,14 +19,15 @@ import { Card } from '@shared/model/concrete/card';
 export class CardDetailComponent implements OnInit {
   @Input() cardList: ICardList;
   @Output() reloadListEvent: EventEmitter<ICard[]> = new EventEmitter<ICard[]>();
-  private cards: ICard[];
+  cards: ICard[];
   private cardEntryIdle = true;
   private CardPopupEditComponentRef: MatDialogRef<CardPopupEditComponent>;
   private CardPopupMoveComponentRef: MatDialogRef<CardPopupMoveComponent>; 
 
-  constructor(private cardDetailService: CardDetailService,
-              private arrayExtensionService: ArrayExtensionService,
-              private dialog: MatDialog) { }
+  constructor(
+    private cardDetailService: CardDetailService,
+    private arrayExtensionService: ArrayExtensionService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.cardDetailService.getCardsById(String(this.cardList.boardId), String(this.cardList.id))

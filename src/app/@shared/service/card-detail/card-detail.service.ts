@@ -11,7 +11,7 @@ export class CardDetailService {
 
   constructor(private http: HttpClient) { }
 
-  public getCardsById(boardId: string, listId: string) {
+  public getCardsById(boardId: string, listId: string): Observable<ICard[]> {
     let params = new HttpParams();
     params = params.append('boardId', boardId);
     params = params.append('cardListId', listId);

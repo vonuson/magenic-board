@@ -16,9 +16,10 @@ export class NavHeaderComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject();
   public user = 'Von Uson';
 
-  constructor(private boardService: BoardService,
-              private boardDialogService: BoardDialogService,
-              private router: Router) {
+  constructor(
+    private boardService: BoardService,
+    private boardDialogService: BoardDialogService,
+    private router: Router) {
 
     this.boardDialogService.isRefresh$
       .takeUntil(this.destroyed$)
