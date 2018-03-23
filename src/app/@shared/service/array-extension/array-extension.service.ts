@@ -18,7 +18,7 @@ export class ArrayExtensionService {
   }
 
   public getNextCardOrder(array: IOrder[]): number{
-    if(array.length > 0){
+    if(array && array.length > 0){
       return array.reduce(
         (prev, curr) => (prev.order > curr.order) ? prev : curr
       ).order + 1;

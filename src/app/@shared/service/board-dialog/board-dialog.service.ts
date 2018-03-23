@@ -13,9 +13,10 @@ export class BoardDialogService {
   private refreshSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isRefresh$ = this.refreshSubject.asObservable();
 
-  constructor(private boardService: BoardService,
-              private router: Router,
-              private dialog: MatDialog) { }
+  constructor(
+    private boardService: BoardService,
+    private router: Router,
+    private dialog: MatDialog) { }
 
   public showBoardInputDialog() {
     this.inputDialogComponentRef = this.dialog.open(InputDialogComponent, {

@@ -1,3 +1,3 @@
 export interface IOrder {
-    order: number
+  order: number
 }

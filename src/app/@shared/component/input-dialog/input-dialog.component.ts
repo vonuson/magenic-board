@@ -7,23 +7,24 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./input-dialog.component.less']
 })
 export class InputDialogComponent {
-  private title: string;
-  private message: string;
-  private btn: string;
+  title: string;
+  message: string;
+  btn: string;
   private response: string;
 
-  constructor(public dialogRef: MatDialogRef<InputDialogComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<InputDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.title = data.title !== undefined ? data.title : '';
       this.message = data.message !== undefined ? data.message : '';
       this.btn = data.btn !== undefined ? data.btn : 'btn';
-    }
+  }
 
   onCloseClick(): void {
     this.dialogRef.close();
   }
 
-  private keyupEnter(response){
-    this.dialogRef.close({ response: response});
+  private keyupEnter(response) {
+    this.dialogRef.close({ response: response });
   }
 }

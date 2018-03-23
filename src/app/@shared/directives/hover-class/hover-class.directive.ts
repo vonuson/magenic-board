@@ -7,8 +7,9 @@ export class HoverClassDirective {
 
   @Input() mbHoverClass: string;
 
-  constructor(public elementRef: ElementRef,
-              private renderer: Renderer) { }
+  constructor(
+    public elementRef: ElementRef,
+    private renderer: Renderer) { }
 
   @HostListener('mouseover') mouseover() {
     this.renderer.setElementClass(this.elementRef.nativeElement, this.mbHoverClass, true);

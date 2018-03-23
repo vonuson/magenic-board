@@ -12,12 +12,13 @@ import { IBoard } from '@shared/model/contract/board';
   styleUrls: ['./board-details.component.less']
 })
 export class BoardDetailsComponent implements OnInit, OnDestroy {
-  private board: IBoard;
+  board: IBoard;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private boardService: BoardService,
-              private elementRef: ElementRef) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private boardService: BoardService,
+    private elementRef: ElementRef) { }
 
   ngOnInit() {
     // Note: flatMap - transform the items emitted by an Observable into Observables, 
