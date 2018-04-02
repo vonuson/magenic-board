@@ -9,9 +9,14 @@ import { InputDialogComponent } from '@shared/component/input-dialog/input-dialo
 
 @Injectable()
 export class BoardDialogService {
-  private inputDialogComponentRef: MatDialogRef<InputDialogComponent>;
+  public inputDialogComponentRef: MatDialogRef<InputDialogComponent>;
   private refreshSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isRefresh$ = this.refreshSubject.asObservable();
+  readonly data = {
+    title: 'New Board',
+    message: 'Title',
+    btn: 'Create'
+  }
 
   constructor(
     private boardService: BoardService,
@@ -21,11 +26,7 @@ export class BoardDialogService {
   public showBoardInputDialog() {
     this.inputDialogComponentRef = this.dialog.open(InputDialogComponent, {
       width: '310px',
-      data: {
-        title: 'New Board',
-        message: 'Title',
-        btn: 'Create'
-      }
+      data: this.data
     });
 
     this.inputDialogComponentRef.afterClosed().subscribe(data => {
