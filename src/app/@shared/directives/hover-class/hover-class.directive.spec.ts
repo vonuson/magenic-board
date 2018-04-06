@@ -38,21 +38,21 @@ describe('HoverClassDirective', () => {
 
   it('should set/unset the styling css on hover', async(() => {
     // The div before the hover has no 'testClass' css class.
-    expect(directiveEl.nativeElement.classList.contains('testClass')).toBe(false);
+    expect(directiveEl.nativeElement.classList.contains('testClass')).toBeFalsy();
 
     // Simulate mouseover
     directiveInstance.mouseover();
     fixture.detectChanges();
     
     // The div during the hover has 'testClass' css class.
-    expect(directiveEl.nativeElement.classList.contains('testClass')).toBe(true);
+    expect(directiveEl.nativeElement.classList.contains('testClass')).toBeTruthy();
 
     // Simulate mouseout
     directiveInstance.mouseout();
     fixture.detectChanges();
     
     // The div during the mouseout has no 'testClass' css class.
-    expect(directiveEl.nativeElement.classList.contains('testClass')).toBe(false);
+    expect(directiveEl.nativeElement.classList.contains('testClass')).toBeFalsy();
   }));
 });
 
