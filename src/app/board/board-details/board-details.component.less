@@ -1,29 +1,27 @@
 div.board-wrapper{ 
-    position: relative;
-    height: calc(~'100% - 64px');
-}
-
-div.board-main-content {
+  position: relative;
+  height: calc(~'100% - 64px');
+  > div.board-main-content {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-div.board-header{
-    color: white;
-    flex:none;
-    overflow: hidden;
-    padding: 8px 4px 8px 8px;
-    position: relative;
+    > div.board-header{
+      color: white;
+      flex:none;
+      overflow: hidden;
+      padding: 8px 4px 8px 8px;
+      position: relative;
+    }
+  }
 }
 
 span.board-text{
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-div.board-details{
-    position: relative;
-    height: 100%;
+.board-details{
+  position: relative;
+  height: 100%;
 }
 
