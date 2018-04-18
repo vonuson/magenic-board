@@ -18,6 +18,7 @@ export class CardPopupMoveComponent {
   private startingCard: ICard;
   private cardLists: ICardList[];
   private cards: ICard[];
+  
   private selectedCardListId: number;
   private selectedCardOrder: number;
   
