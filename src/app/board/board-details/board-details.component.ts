@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { CardListService } from '@shared/service/card-list/card-list.service';
 import { BoardService } from '@shared/service/board/board.service';
 import { IBoard } from '@shared/model/contract/board';
 

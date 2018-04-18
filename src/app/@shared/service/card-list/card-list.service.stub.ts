@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { ICardList } from '@shared/model/contract/card-list';
 
-export class CardListService {
+export class CardListServiceStub {
   cardList: Array<ICardList> = [
     { id: 1, boardId: 1, listName: 'listName', order: 1 },
     { id: 2, boardId: 1, listName: 'listName2', order: 2 },
