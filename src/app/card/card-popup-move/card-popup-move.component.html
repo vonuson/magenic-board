@@ -6,7 +6,7 @@
   </div>
   <div class="dialog-body">
     <mat-form-field class="full-width">
-      <mat-select placeholder="List" [(ngModel)]="selectedCardListId" (change)="onSelect()">
+      <mat-select placeholder="List" [(ngModel)]="selectedCardListId" (selectionChange)="onSelect()">
         <mat-option *ngFor="let cardList of cardLists" [value]="cardList.id">
           {{ cardList.listName }}
         </mat-option>

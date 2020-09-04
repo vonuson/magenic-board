@@ -1,4 +1,4 @@
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, Inject } from '@angular/core';
 
 @Component({
@@ -13,14 +13,15 @@ export class InputDialogComponent {
   response: string;
 
   readonly defaultTitleMessage = '';
-  readonly defaultButton = 'btn'
+  readonly defaultButton = 'btn';
 
   constructor(
     public dialogRef: MatDialogRef<InputDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.title = (data && data.title) ? data.title : this.defaultTitleMessage;
-      this.message = (data && data.message) ? data.message : this.defaultTitleMessage;
-      this.btn = (data && data.btn) ? data.btn : this.defaultButton;
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.title = (data && data.title) ? data.title : this.defaultTitleMessage;
+    this.message = (data && data.message) ? data.message : this.defaultTitleMessage;
+    this.btn = (data && data.btn) ? data.btn : this.defaultButton;
   }
 
   onCloseClick(): void {

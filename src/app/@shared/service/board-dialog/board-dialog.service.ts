@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { BoardService } from '../board/board.service';
@@ -16,12 +16,13 @@ export class BoardDialogService {
     title: 'New Board',
     message: 'Title',
     btn: 'Create'
-  }
+  };
 
   constructor(
     private boardService: BoardService,
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) { }
 
   public showBoardInputDialog() {
     this.inputDialogComponentRef = this.dialog.open(InputDialogComponent, {
@@ -30,7 +31,7 @@ export class BoardDialogService {
     });
 
     this.inputDialogComponentRef.afterClosed().subscribe(data => {
-      if(data && data.response) { 
+      if (data && data.response) {
         this.boardService
           .addBoard(new Board(data.response))
           .subscribe(res => {
@@ -42,8 +43,8 @@ export class BoardDialogService {
     });
   }
 
-  public changePosition(ClientY: number, ClientX: number){
-    const height = ClientY > window.innerHeight - 210 ? (window.innerHeight - 210)  + 'px': ClientY + 'px';
+  public changePosition(ClientY: number, ClientX: number) {
+    const height = ClientY > window.innerHeight - 210 ? (window.innerHeight - 210) + 'px' : ClientY + 'px';
     const width = ClientX > window.innerWidth - 320 ? (window.innerWidth - 320) + 'px' : ClientX + 'px';
     this.inputDialogComponentRef.updatePosition({ top: height, left: width });
   }

@@ -1,4 +1,4 @@
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, Inject } from '@angular/core';
 
 @Component({
@@ -9,8 +9,10 @@ import { Component, Inject } from '@angular/core';
 export class CardPopupEditComponent {
   private input: string;
 
-  constructor(public dialogRef: MatDialogRef<CardPopupEditComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any) { 
+  constructor(
+    public dialogRef: MatDialogRef<CardPopupEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.input = data.input !== undefined ? data.input : '';
   }
 

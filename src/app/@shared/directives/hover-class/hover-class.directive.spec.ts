@@ -3,6 +3,13 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+// Test Component
+@Component({
+  selector: 'mb-test-cmp',
+  template: ''
+})
+class TestComponent { }
+
 describe('HoverClassDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let directiveInstance: HoverClassDirective;
@@ -22,7 +29,7 @@ describe('HoverClassDirective', () => {
       set: {
         template: '<div mbHoverClass="testClass"></div>'
       }
-    })
+    });
 
     fixture = TestBed.createComponent(TestComponent);
 
@@ -43,22 +50,15 @@ describe('HoverClassDirective', () => {
     // Simulate mouseover
     directiveInstance.mouseover();
     fixture.detectChanges();
-    
+
     // The div during the hover has 'testClass' css class.
     expect(directiveEl.nativeElement.classList.contains('testClass')).toBeTruthy();
 
     // Simulate mouseout
     directiveInstance.mouseout();
     fixture.detectChanges();
-    
+
     // The div during the mouseout has no 'testClass' css class.
     expect(directiveEl.nativeElement.classList.contains('testClass')).toBeFalsy();
   }));
 });
-
-// Test Component
-@Component({
-    selector: 'test-cmp',
-    template: ''
-})
-class TestComponent { }

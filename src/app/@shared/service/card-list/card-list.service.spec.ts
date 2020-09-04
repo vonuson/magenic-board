@@ -12,10 +12,10 @@ describe('CardListService', () => {
     { id: 1, boardId: 1, listName: 'listName', order: 1 },
     { id: 2, boardId: 1, listName: 'listName2', order: 2 },
     { id: 3, boardId: 2, listName: 'listName3', order: 1 },
-  ]
-  const testAddCardList: ICardList = { id: 4, boardId: 1, listName: 'add_listName', order: 3 }
+  ];
+  const testAddCardList: ICardList = { id: 4, boardId: 1, listName: 'add_listName', order: 3 };
   // Filter test data based on boardId
-  let filteredTestCardList = testCardList.filter(_ => _.boardId === Number(testBoardId));
+  const filteredTestCardList = testCardList.filter(_ => _.boardId === Number(testBoardId));
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -36,7 +36,8 @@ describe('CardListService', () => {
   }));
 
   describe('getCardListByBoardId()', () => {
-    it('should send an expected getCardListByBoardId() request  with boardId parameter', async(inject([CardListService, HttpTestingController],
+    it('should send an expected getCardListByBoardId() request  with boardId parameter',
+      async(inject([CardListService, HttpTestingController],
       (service: CardListService, backend: HttpTestingController) => {
         service.getCardListByBoardId(testBoardId).subscribe();
 
@@ -45,7 +46,7 @@ describe('CardListService', () => {
 
           return req.url === environment.CARD_LIST_URL
             && req.method === 'GET'
-            && req.params.get('boardId') === testBoardId
+            && req.params.get('boardId') === testBoardId;
         }, `GET to '/card-list' with boardId parameter`);
       }))
     );
@@ -67,7 +68,7 @@ describe('CardListService', () => {
           expect(next[1].order).toBe(filteredTestCardList[1].order);
         });
 
-        let expectedTestUrl = environment.CARD_LIST_URL + '?boardId=' + testBoardId;
+        const expectedTestUrl = environment.CARD_LIST_URL + '?boardId=' + testBoardId;
 
         backend.expectOne(expectedTestUrl).flush(filteredTestCardList, { status: 200, statusText: 'Ok' });
       }))
@@ -83,13 +84,15 @@ describe('CardListService', () => {
           const body = new HttpParams({ fromString: req.body });
 
           return req.url === environment.CARD_LIST_URL
-            && req.method === 'POST'
+            && req.method === 'POST';
         }, `POST to '/card-list' with card object parameter`);
       }))
     );
 
     it(`should add a new card to the list`, async(inject([CardListService, HttpTestingController],
       (service: CardListService, backend: HttpTestingController) => {
+        let originalLenghtBeforeAdd;
+
         service.addCardList(testAddCardList).subscribe((next) => {
           expect(filteredTestCardList.length).toBe(originalLenghtBeforeAdd + 1);
 
@@ -99,7 +102,7 @@ describe('CardListService', () => {
           expect(filteredTestCardList[originalLenghtBeforeAdd].order).toBe(testAddCardList.order);
         });
 
-        let originalLenghtBeforeAdd = filteredTestCardList.length;
+        originalLenghtBeforeAdd = filteredTestCardList.length;
         filteredTestCardList.push(testAddCardList);
 
         backend.expectOne(environment.CARD_LIST_URL).flush(filteredTestCardList, { status: 200, statusText: 'Ok' });

@@ -13,7 +13,7 @@ describe('CardPopupMoveComponent', () => {
   let component: CardPopupMoveComponent;
   let fixture: ComponentFixture<CardPopupMoveComponent>;
 
-  let data = { }
+  const data = { };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

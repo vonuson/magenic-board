@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
 
 import { BoardService } from '@shared/service/board/board.service';
 import { IBoard } from '@shared/model/contract/board';
+import { flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'mb-board-details',
@@ -20,27 +21,28 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
     private elementRef: ElementRef) { }
 
   ngOnInit() {
-    // Note: flatMap - transform the items emitted by an Observable into Observables, 
+    // Note: flatMap - transform the items emitted by an Observable into Observables,
     // then flatten the emissions from those into a single Observable.
-    this.route.params.flatMap((params: Params) => {
-        return Observable.of(params['id']);
+    this.route.params.pipe(
+      flatMap((params: Params) => {
+        return of(params['id']);
       })
+    )
       .subscribe(res => this.displayBoardDetails(res));
   }
 
   private displayBoardDetails(id: number): void {
     this.boardService.getBoard(id)
       .subscribe(data => {
-        this.board = data
+        this.board = data;
         this.changeBackgroundColor(data.boardColor);
       }, (error) => {
         this.router.navigate(['/board/notFound', id]);
         console.log(error);
-      }
-    );
+      });
   }
 
-  private changeBackgroundColor(color = 'white'){
+  private changeBackgroundColor(color = 'white') {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = color;
   }
 

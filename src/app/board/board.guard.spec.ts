@@ -1,4 +1,4 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { BoardGuard } from './board.guard';
 import { RouterTestingModule } from '@angular/router/testing';

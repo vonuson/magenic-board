@@ -22,7 +22,7 @@ describe('InputDialogComponent', () => {
     title: 'test_title',
     message: 'test_message',
     btn: 'test_button'
-  }
+  };
   const inputedData = 'test_data';
 
   beforeEach(async(() => {
@@ -125,8 +125,8 @@ describe('InputDialogComponent', () => {
       component.dialogRef = dialog.open(InputDialogComponent, { data: data });
 
       component.keyupEnter(inputedData);
-      component.dialogRef.afterClosed().subscribe(data => {
-        expect(data.response).toBe(inputedData);
+      component.dialogRef.afterClosed().subscribe(result => {
+        expect(result.response).toBe(inputedData);
       });
     });
   });

@@ -6,6 +6,5 @@ export class CardList implements ICardList {
   constructor(
     public boardId: number,
     public listName: string,
-    public order: number){
-  }
+    public order: number) { }
 }

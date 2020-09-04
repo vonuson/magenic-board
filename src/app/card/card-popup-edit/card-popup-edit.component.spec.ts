@@ -11,7 +11,7 @@ describe('CardPopupEditComponent', () => {
   let component: CardPopupEditComponent;
   let fixture: ComponentFixture<CardPopupEditComponent>;
 
-  let data = { }  
+  const data = { };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -2,10 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
 
 import { BoardDetailsComponent } from './board-details.component';
-import { CardListComponent } from 'app/card/card-list/card-list.component';
 
 import { ArrayExtensionService } from '@shared/service/array-extension/array-extension.service';
 import { CardListServiceStub } from '@shared/service/card-list/card-list.service.stub';
@@ -38,7 +37,7 @@ describe('BoardDetailsComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: Observable.of({ id: 1 })
+            params: of({ id: 1 })
           }
         },
         ArrayExtensionService
@@ -50,7 +49,7 @@ describe('BoardDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardDetailsComponent);
     component = fixture.componentInstance;
-    
+
     fixture.detectChanges();
 
     boardEl = fixture.debugElement.query(By.css('.board-text'));

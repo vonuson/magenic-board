@@ -22,8 +22,8 @@ describe('BoardListComponent', () => {
 
   const testBoards: Array<IBoard> = [
     { id: 1, boardName: 'board_name1', boardColor: 'rgb(0, 121, 191)' },
-    { id: 2, boardName: 'board_name2', boardColor: 'blue' }    
-  ]
+    { id: 2, boardName: 'board_name2', boardColor: 'blue' }
+  ];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
