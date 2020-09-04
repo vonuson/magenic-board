@@ -4,7 +4,8 @@ import { BoardDialogService } from '@shared/service/board-dialog/board-dialog.se
 
 import { Router } from '@angular/router';
 import { IBoard } from '@shared/model/contract/board';
-import { Subject, Subscription } from 'rxjs/Rx';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'mb-nav-header',
@@ -19,10 +20,13 @@ export class NavHeaderComponent implements OnInit, OnDestroy {
   constructor(
     private boardService: BoardService,
     private boardDialogService: BoardDialogService,
-    private router: Router) {
+    private router: Router
+  ) {
 
     this.boardDialogService.isRefresh$
-      .takeUntil(this.destroyed$)
+      .pipe(
+        takeUntil(this.destroyed$)
+      )
       .subscribe(flag => {
         if (flag) {
           this.loadData();
@@ -40,7 +44,7 @@ export class NavHeaderComponent implements OnInit, OnDestroy {
     this.boardService.getAllBoard()
       .subscribe(data => {
         console.log('NavHeaderComponent: Service data successfully received.');
-        this.boards = data.sort((a, b) => a.boardName.localeCompare(b.boardName))
+        this.boards = data.sort((a, b) => a.boardName.localeCompare(b.boardName));
       }
       , err => console.log('error:' + err)
       );

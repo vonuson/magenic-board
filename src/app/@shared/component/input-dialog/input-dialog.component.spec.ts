@@ -3,10 +3,11 @@ import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { By } from '@angular/platform-browser';
 
 import { InputDialogComponent } from '@shared/component/input-dialog/input-dialog.component';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@shared/shared.module';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 describe('InputDialogComponent', () => {
   let component: InputDialogComponent;
@@ -15,14 +16,14 @@ describe('InputDialogComponent', () => {
   let titleEl: DebugElement;
   let messageEl: DebugElement;
   let btnEl: DebugElement;
+  let dialog: MatDialog;
 
   const data = {
     title: 'test_title',
     message: 'test_message',
     btn: 'test_button'
-  }
-  const defaultTitleMessage = '';
-  const defaultButton = 'btn';
+  };
+  const inputedData = 'test_data';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,11 +35,20 @@ describe('InputDialogComponent', () => {
         { provide: MAT_DIALOG_DATA, useValue: { data } },
         { provide: MatDialogRef, useValue: { InputDialogComponent } }
       ]
-    })
-      .compileComponents();
+    });
+
+    TestBed.overrideModule(BrowserDynamicTestingModule, {
+      set: {
+        entryComponents: [InputDialogComponent]
+      }
+    });
+
+    TestBed.compileComponents();
   }));
-  
-  beforeEach(() => {
+
+  beforeEach(inject([MatDialog], (d: MatDialog) => {
+    dialog = d;
+
     fixture = TestBed.createComponent(InputDialogComponent);
     component = fixture.componentInstance;
 
@@ -47,8 +57,8 @@ describe('InputDialogComponent', () => {
     btnEl = fixture.debugElement.query(By.css('.dialog-button'));
 
     fixture.detectChanges();
-  });
-  
+  }));
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -59,7 +69,7 @@ describe('InputDialogComponent', () => {
   });
 
   it('should display default title if undefined', () => {
-    expect(titleEl.nativeElement.innerText).toEqual(defaultTitleMessage);
+    expect(titleEl.nativeElement.innerText).toEqual(component.defaultTitleMessage);
   });
 
   it('should display dialog title', () => {
@@ -74,7 +84,7 @@ describe('InputDialogComponent', () => {
   });
 
   it('should display default message if undefined', () => {
-    expect(messageEl.nativeElement.innerText).toEqual(defaultTitleMessage);
+    expect(messageEl.nativeElement.innerText).toEqual(component.defaultTitleMessage);
   });
 
   it('should display dialog message', () => {
@@ -89,12 +99,35 @@ describe('InputDialogComponent', () => {
   });
 
   it('should display default button name if undefined', () => {
-    expect(btnEl.nativeElement.innerText).toEqual(defaultButton);
+    expect(btnEl.nativeElement.innerText).toEqual(component.defaultButton);
   });
 
   it('should display dialog button', () => {
     component.btn = data.btn;
     fixture.detectChanges();
     expect(btnEl.nativeElement.innerText).toEqual(data.btn);
+  });
+
+  describe('onCloseClick()', () => {
+    it('should close dialog', () => {
+      // Open dialog
+      component.dialogRef = dialog.open(InputDialogComponent, { data: data });
+      expect(component.dialogRef._containerInstance._state).toBe('enter');
+
+      component.onCloseClick();
+      expect(component.dialogRef._containerInstance._state).toBe('exit');
+    });
+  });
+
+  describe('keyupEnter()', () => {
+    it('shoud return response data on keyup enter', () => {
+      // Open dialog
+      component.dialogRef = dialog.open(InputDialogComponent, { data: data });
+
+      component.keyupEnter(inputedData);
+      component.dialogRef.afterClosed().subscribe(result => {
+        expect(result.response).toBe(inputedData);
+      });
+    });
   });
 });

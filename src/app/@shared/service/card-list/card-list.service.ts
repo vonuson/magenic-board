@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 
@@ -9,11 +9,11 @@ import { ICardList } from '@shared/model/contract/card-list';
 export class CardListService {
 
   constructor(private http: HttpClient) { }
-  
+
   public getCardListByBoardId(boardId: string) {
     let params = new HttpParams();
     params = params.append('boardId', boardId);
-    
+
     return this.http.get<ICardList[]>(environment.CARD_LIST_URL, { params: params });
   }
 

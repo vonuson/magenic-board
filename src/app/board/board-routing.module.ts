@@ -8,10 +8,10 @@ import { PageNotFoundComponent } from '@shared/component/page-not-found/page-not
 
 const routes: Routes = [
   { path: '', component: BoardListComponent },
-  { 
-    path: ':id', 
+  {
+    path: ':id',
     canActivate: [BoardGuard],
-    component: BoardDetailsComponent 
+    component: BoardDetailsComponent
   },
   {
     path: 'notFound/:id',

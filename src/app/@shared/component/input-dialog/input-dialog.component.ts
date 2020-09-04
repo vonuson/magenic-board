@@ -1,4 +1,4 @@
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, Inject } from '@angular/core';
 
 @Component({
@@ -10,21 +10,25 @@ export class InputDialogComponent {
   title: string;
   message: string;
   btn: string;
-  private response: string;
+  response: string;
+
+  readonly defaultTitleMessage = '';
+  readonly defaultButton = 'btn';
 
   constructor(
     public dialogRef: MatDialogRef<InputDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.title = data.title !== undefined ? data.title : '';
-      this.message = data.message !== undefined ? data.message : '';
-      this.btn = data.btn !== undefined ? data.btn : 'btn';
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.title = (data && data.title) ? data.title : this.defaultTitleMessage;
+    this.message = (data && data.message) ? data.message : this.defaultTitleMessage;
+    this.btn = (data && data.btn) ? data.btn : this.defaultButton;
   }
 
   onCloseClick(): void {
     this.dialogRef.close();
   }
 
-  private keyupEnter(response) {
+  keyupEnter(response) {
     this.dialogRef.close({ response: response });
   }
 }

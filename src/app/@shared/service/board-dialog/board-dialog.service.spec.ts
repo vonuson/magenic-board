@@ -59,7 +59,7 @@ describe('BoardDialog.Service', () => {
     it('should transfer the data to the dialog', () => {
       service.showBoardInputDialog();
 
-      service.inputDialogComponentRef.componentInstance;
+      // service.inputDialogComponentRef.componentInstance;
       expect(service.inputDialogComponentRef.componentInstance.data).toBe(service.data);
     });
 
@@ -83,7 +83,7 @@ describe('BoardDialog.Service', () => {
   describe('changePosition()', () => {
     it('should be able to update the position', () => {
       service.showBoardInputDialog();
-      let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+      const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
 
       expect(overlayPane.clientTop).toBe(0);
       expect(overlayPane.clientLeft).toBe(0);
@@ -103,9 +103,9 @@ describe('BoardDialog.Service', () => {
 
     it('should reposition when it\'s about to be cut on the screen.', () => {
       service.showBoardInputDialog();
-      let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
-      let expectedMarginTop = window.innerHeight - 210 + 'px';
-      let expectedMarginLeft = window.innerWidth - 320 + 'px';
+      const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+      const expectedMarginTop = window.innerHeight - 210 + 'px';
+      const expectedMarginLeft = window.innerWidth - 320 + 'px';
 
       service.changePosition(window.innerHeight, window.innerWidth);
       expect(overlayPane.style.marginTop).toBe(expectedMarginTop);

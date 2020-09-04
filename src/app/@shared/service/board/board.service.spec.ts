@@ -1,5 +1,5 @@
 import { TestBed, inject, async } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientModule, HttpParams, HttpRequest } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
@@ -40,7 +40,7 @@ describe('BoardService', () => {
           const body = new HttpParams({ fromString: req.body });
 
           return req.url === environment.BOARDS_URL
-            && req.method === 'GET'
+            && req.method === 'GET';
         }, `GET to '/boards' without parameters`);
       }))
     );
@@ -77,7 +77,7 @@ describe('BoardService', () => {
           const body = new HttpParams({ fromString: req.body });
 
           return req.url === environment.BOARDS_URL + '/' + testId
-            && req.method === 'GET'
+            && req.method === 'GET';
         }, `GET to '/boards' with id parameter`);
       }))
     );

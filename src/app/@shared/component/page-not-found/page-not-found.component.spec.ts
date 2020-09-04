@@ -15,7 +15,7 @@ describe('PageNotFoundComponent', () => {
   let messageEl: DebugElement;
 
   const testErrorTitle = 'test_title';
-  const testErrorMessage = 'test_message'; 
+  const testErrorMessage = 'test_message';
   const defaultErrorTitle = 'Error 404: Page not found.';
 
   beforeEach(async(() => {

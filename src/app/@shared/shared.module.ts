@@ -19,7 +19,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     PageNotFoundComponent,
   ],
   exports: [
-    FormsModule, 
+    FormsModule,
     HoverClassDirective,
     InputDialogComponent,
     PageNotFoundComponent,

@@ -7,6 +7,6 @@ export class Card implements ICard {
     public boardId: number,
     public cardListId: number,
     public cardName: string,
-    public order: number){
-  }
+    public order: number
+  ) { }
 }

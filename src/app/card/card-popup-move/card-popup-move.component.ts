@@ -18,36 +18,38 @@ export class CardPopupMoveComponent {
   private startingCard: ICard;
   private cardLists: ICardList[];
   private cards: ICard[];
+
   private selectedCardListId: number;
   private selectedCardOrder: number;
-  
+
   constructor(
     private cardDetailService: CardDetailService,
     private cardListService: CardListService,
     private arrayExtensionService: ArrayExtensionService,
     public dialogRef: MatDialogRef<CardPopupMoveComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { 
-      this.title = data.title !== undefined ? data.title : '';
-      this.startingCard = data.card !== undefined ? data.card : {};
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.title = data.title !== undefined ? data.title : '';
+    this.startingCard = data.card !== undefined ? data.card : {};
 
-      if(this.startingCard) this.getCardList();
+    if (this.startingCard) { this.getCardList(); }
   }
 
-  private getCardList(): void{
+  private getCardList(): void {
     this.cardListService
       .getCardListByBoardId(String(this.startingCard.boardId))
-      .subscribe((list: ICardList[]) =>  { 
-        this.cardLists = list.sort((a, b) => 
+      .subscribe((list: ICardList[]) => {
+        this.cardLists = list.sort((a, b) =>
           this.arrayExtensionService.compareSortEntry(a.order, b.order)
         );
         this.selectedCardListId = this.startingCard.cardListId;
         this.onSelect();
       }
-    );
+      );
   }
 
-  onSelect(): void{
-    let cardlist: ICardList = this.cardLists.find(list => list.id === this.selectedCardListId);
+  onSelect(): void {
+    const cardlist: ICardList = this.cardLists.find(list => list.id === this.selectedCardListId);
 
     this.cardDetailService
       .getCardsById(String(cardlist.boardId), String(cardlist.id))
@@ -57,8 +59,8 @@ export class CardPopupMoveComponent {
         );
         const nextCardOrder = this.arrayExtensionService.getNextCardOrder(this.cards);
         this.selectedCardOrder = this.startingCard.order;
-        
-        if (cardlist.id != this.startingCard.cardListId){
+
+        if (cardlist.id !== this.startingCard.cardListId) {
           this.cards.push(new Card(cardlist.boardId, cardlist.id, '', nextCardOrder));
           this.selectedCardOrder = nextCardOrder;
         }

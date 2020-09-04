@@ -19,7 +19,7 @@ import { BoardDetailsComponent } from './board-details/board-details.component';
   ],
   exports: [BoardListComponent],
   declarations: [
-    BoardListComponent, 
+    BoardListComponent,
     BoardDetailsComponent
   ],
   providers: [BoardGuard]

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
 
 import { ArrayExtensionService } from '@shared/service/array-extension/array-extension.service';
 import { CardListService } from '@shared/service/card-list/card-list.service';
 import { ICardList } from '@shared/model/contract/card-list';
 import { CardList } from '@shared/model/concrete/card-list';
-import { ICard } from '@shared/model/contract/card';
+import { flatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'mb-card-list',
@@ -22,34 +22,36 @@ export class CardListComponent implements OnInit {
     private route: ActivatedRoute,
     private cardListService: CardListService,
     private arrayExtensionService: ArrayExtensionService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.route.params.flatMap((params: Params) => {
+    this.route.params.pipe(
+      flatMap((params: Params) => {
         this.boardId = Number(params['id']);
-        return Observable.of(params['id']);
-      })
+        return of(params['id']);
+      }))
       .subscribe(res => this.displayCards(res));
   }
 
   private displayCards(boardId: string): void {
     this.cardListService.getCardListByBoardId(boardId)
-      .subscribe((list: ICardList[]) =>  { 
-        this.cardLists = list.sort((a, b) => 
+      .subscribe((list: ICardList[]) => {
+        this.cardLists = list.sort((a, b) =>
           this.arrayExtensionService.compareSortEntry(a.order, b.order)
-      );
-      console.log('CardListComponent - Card List:' + JSON.stringify(list));
-    });
+        );
+        console.log('CardListComponent - Card List:' + JSON.stringify(list));
+      });
   }
 
-  private toggleListEntry(): void{
+  private toggleListEntry(): void {
     this.listEntryIdle = !this.listEntryIdle;
   }
 
-  private onSubmit(form): void{
-    if(form.value.listEntry){
+  private onSubmit(form): void {
+    if (form.value.listEntry) {
       const nextOrder = this.arrayExtensionService.getNextCardOrder(this.cardLists);
-      let newCardList = new CardList(this.boardId, form.value.listEntry, nextOrder);
+      const newCardList = new CardList(this.boardId, form.value.listEntry, nextOrder);
       this.cardListService.addCardList(newCardList).subscribe(res => {
         console.log('CardList-id: ' + res['id'] + ' has been added.');
         newCardList.id = res['id'];
@@ -60,8 +62,8 @@ export class CardListComponent implements OnInit {
     }
   }
 
-  private reloadList(e){
-    this.router.navigateByUrl('/board', { skipLocationChange: true}).then(() =>
-    this.router.navigate(['/board', this.boardId]));
+  private reloadList(e) {
+    this.router.navigateByUrl('/board', { skipLocationChange: true }).then(() =>
+      this.router.navigate(['/board', this.boardId]));
   }
 }

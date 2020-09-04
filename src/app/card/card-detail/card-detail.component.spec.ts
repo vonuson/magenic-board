@@ -14,10 +14,10 @@ describe('CardDetailComponent', () => {
   let fixture: ComponentFixture<CardDetailComponent>;
   let cardDetailService: CardDetailService;
 
-  let testCards: Array<ICard> = [
+  const testCards: Array<ICard> = [
     { id: 1, boardId: 1, cardListId: 1, cardName: 'card_name', order: 1 },
     { id: 2, boardId: 1, cardListId: 1, cardName: 'card_name2', order: 2 },
-  ]
+  ];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,13 +25,13 @@ describe('CardDetailComponent', () => {
         SharedModule,
         MaterialModule
       ],
-      declarations: [ CardDetailComponent ],
+      declarations: [CardDetailComponent],
       providers: [
         { provide: CardDetailService, useClass: CardDetailServiceStub },
         ArrayExtensionService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -46,7 +46,7 @@ describe('CardDetailComponent', () => {
 
   // This test the ngOnit part where it calls the CardDetailService
   it('should retrieve cards from an input of cardList', () => {
-    component.cardList = { id: 1, boardId: 1, listName: 'list_name', order: 1 }
+    component.cardList = { id: 1, boardId: 1, listName: 'list_name', order: 1 };
     fixture.detectChanges();
     expect(component.cards).toEqual(testCards);
   });

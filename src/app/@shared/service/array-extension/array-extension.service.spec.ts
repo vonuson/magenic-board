@@ -17,8 +17,8 @@ describe('ArrayExtensionService', () => {
     service = new ArrayExtensionService();
   });
 
-  it('should be created', inject([ArrayExtensionService], (service: ArrayExtensionService) => {
-    expect(service).toBeTruthy();
+  it('should be created', inject([ArrayExtensionService], (arrayExtensionService: ArrayExtensionService) => {
+    expect(arrayExtensionService).toBeTruthy();
   }));
 
   describe('compareSortEntry()', () => {
